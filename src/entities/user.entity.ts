@@ -7,6 +7,9 @@ import {
     OneToMany,
 } from 'typeorm';
 
+import { Task } from './task.entity';
+import { Comment } from './comment.entity';
+
 export enum UserRole {
     AUTHOR = 'author',
     USER = 'user'
@@ -38,4 +41,11 @@ export class User {
 
     @Column({ nullable: true })
     refreshToken?: string | null;
+
+    @OneToMany(() => Task, task => task.user)
+    tasks: Task[];
+
+    @OneToMany(() => Comment, comment => comment.user)
+    comments: Comment[];
+
 }
