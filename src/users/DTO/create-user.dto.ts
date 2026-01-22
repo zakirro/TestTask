@@ -1,7 +1,16 @@
-import { UserRole } from "src/entities/user.entity";
+import { IsEmail, IsOptional, IsString, IsUUID, MinLength } from 'class-validator';
+
 
 export class CreateUserDTO {
-    password: string
-    role?: UserRole
+
+    @IsString()
+    @MinLength(6)
+    password: string;
+
+    @IsOptional()
+    @IsUUID()
     task_id?: string
+
+    @IsEmail()
+    email: string;
 }

@@ -5,6 +5,7 @@ import { Task } from '../entities/task.entity';
 import { User } from '../entities/user.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { Comment } from 'src/entities/comment.entity';
 
 
 @Injectable()

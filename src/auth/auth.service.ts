@@ -23,8 +23,8 @@ export class AuthService {
 
         const hashedPassword = await bcrypt.hash(dto.password, 10);
         const user = this.userRepository.create({
+            email: dto.email,
             password: hashedPassword,
-            role: dto.role || UserRole.USER,
         });
 
         await this.userRepository.save(user);
@@ -86,7 +86,7 @@ export class AuthService {
     }
 
     async login(dto: LoginDto) {
-        const user = await this.userRepository.findOne({ where: { id: dto.id } });
+        const user = await this.userRepository.findOne({ where: { email: dto.email } });
 
         if (!user) {
             throw new UnauthorizedException('User not found');

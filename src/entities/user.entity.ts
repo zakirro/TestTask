@@ -23,6 +23,9 @@ export class User {
     @Column()
     password: string
 
+    @Column()
+    email: string
+
     @Column({
         type: 'enum',
         enum: UserRole,
@@ -33,13 +36,13 @@ export class User {
     @CreateDateColumn()
     created_at: Date
 
-    @CreateDateColumn()
+    @UpdateDateColumn()
     updated_at: Date
 
     @Column({ type: 'uuid', nullable: true })
     task_id: string;
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, type: 'text' })
     refreshToken?: string | null;
 
     @OneToMany(() => Task, task => task.user)

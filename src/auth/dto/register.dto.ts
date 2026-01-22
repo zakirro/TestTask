@@ -1,7 +1,11 @@
-import { UserRole } from '../../entities/user.entity'
+import { IsEmail, IsString, MinLength } from 'class-validator';
+
 
 export class RegisterDto {
+    @IsEmail()
+    email: string;
+
+    @IsString()
+    @MinLength(6)
     password: string;
-    role?: UserRole;
-    task_id?: string;
 }
