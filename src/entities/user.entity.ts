@@ -35,4 +35,7 @@ export class User {
 
     @Column({ type: 'uuid', nullable: true })
     task_id: string;
+
+    @Column({ nullable: true })
+    refreshToken?: string | null;
 }
